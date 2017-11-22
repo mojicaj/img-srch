@@ -1,1 +1,1 @@
-# FCC Backend Challenges - 
+# FCC Backend Challenges - Image Search
