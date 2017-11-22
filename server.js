@@ -41,7 +41,9 @@ app.route('/')
 
 app.route('/api/imagesearch/:query')
   .get((req, res) => {
-    
+    search(req.params.query).then((results) => {
+        res.type('json').send(results);
+      });
   
   })
 

@@ -7,6 +7,13 @@ const id = process.env.AID;
 
 module.exports = (query) => {
   return new Promise( (resolve, reject) => {
+    resolve('got it yo:'+query)
+  
+    mongodb.MongoClient.connect(uri, function(err, db) {
+      if(err) return reject(err);
+      
+      let searches = db.collection('searches');
+    });
     
-  } )
+  })
 }
