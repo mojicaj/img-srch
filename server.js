@@ -8,6 +8,7 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
+const search = require('./search.js');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -38,7 +39,11 @@ app.route('/')
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
 
-app.route('/')
+app.route('/api/imagesearch/:query')
+  .get((req, res) => {
+    
+  
+  })
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
