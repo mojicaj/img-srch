@@ -5,12 +5,14 @@ const uri = "mongodb://"+process.env.USER+":"+process.env.PASS+"@"+process.env.H
 const key = process.env.AKEY;
 const id = process.env.AID;
 const http = require('http');
-let url = 'https://cse.google.com/cse.js??key=INSERT_YOUR_API_KEY&cxcx=' + id'
+let url = 'https://cse.google.com/cse.js?key='+ key +'&cx=' + id +'&q=';
 
 module.exports = (query) => {
   return new Promise( (resolve, reject) => {
     
-    http.get()
+    http.get(url+query, (data) => {
+      
+    })
     resolve({ query })
   
     /*mongodb.MongoClient.connect(uri, function(err, db) {
@@ -21,17 +23,3 @@ module.exports = (query) => {
     
   })
 }
-
-
-<script>
-  (function() {
-    var cx = '010504916402817372166:hpqokq_6zyy';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
