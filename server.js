@@ -38,7 +38,7 @@ app.route('/')
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
 
-
+app.route('/')
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
