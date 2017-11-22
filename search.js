@@ -15,9 +15,9 @@ module.exports = (query) => {
         return reject(err);
       });
     
-    response.setEncoding('utf8');
-    var data = [];
-    response.on("data", function (chunk) { data.push(chunk) });
+    //response.setEncoding('utf8');
+    let data;
+    response.on("data", function (chunk) { data = chunk) });
     
     response.on("end", function () { data.forEach(function (res) { console.log(res) }) });
     })
