@@ -6,8 +6,8 @@
 'use strict';
 
 const fs = require('fs');
-cons express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -37,6 +37,8 @@ app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
+
+
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
