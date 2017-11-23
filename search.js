@@ -10,18 +10,18 @@ const http = require('http');
 let test = function (query) {
   //return { "yup": query }
   
-  let url = 'http://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
-    
+  //let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
+    let url = 'http://cse.google.com/cse/publicurl?cx='+ id +'&q='+query;
     http.get(url, function  (response) {
       console.log('in');
-      console.log(response);
+      //console.log(response);
       response.on("error", function (err) {
         console.log('error:'+err);
       });
     
-    response.setEncoding('utf8');
+    //response.setEncoding('utf8');
     let data;
-    response.on("data", function (chunk) { console.log('chunk:'+chunk)
+    response.on("data", function (chunk) { console.log('chunkJ:'+chunk)
                                           data = chunk });
       //console.log(data);
     
