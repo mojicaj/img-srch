@@ -8,7 +8,8 @@ const https = require('https');
 
 
 module.exports = (query, offset) => {
-  
+  let time = new Date().toISOString();
+  console.log(time);
   return new Promise( (resolve, reject) => {
     let start = (offset) ? offset : 1;
     console.log(start);
