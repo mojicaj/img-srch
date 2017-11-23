@@ -10,7 +10,9 @@ const https = require('https');
 module.exports = (query, offset) => {
   
   return new Promise( (resolve, reject) => {
-    let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&searchType=image' +'&q='+query;
+    let start = (offset) ? offset : 1;
+    console.log(start);
+    let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&searchType=image' +'&q='+query+'&start=' + start;
     
     https.get(url, function  (response) {
     response.setEncoding('utf8');
