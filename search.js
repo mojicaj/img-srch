@@ -5,12 +5,20 @@ const uri = "mongodb://"+process.env.USER+":"+process.env.PASS+"@"+process.env.H
 const key = process.env.AKEY;
 const id = process.env.AID;
 const http = require('http');
-let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q=';
 
-module.exports = (query) => {
+
+
+
+
+module.ex
+
+/*module.exports = (query) => {
   return new Promise( (resolve, reject) => {
+    let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
     
-    http.get(url+query, function (response) {
+    http.get(url, function  (response) {
+      console.log(url)
+      console.log('in');
       console.log(response);
       response.on("error", function (err) {
         console.log('error:'+err);
@@ -25,13 +33,13 @@ module.exports = (query) => {
     
     response.on("end", function () { console.log('end:');
                                                  resolve({ data }) });
-    })
+    });
   
     /*mongodb.MongoClient.connect(uri, function(err, db) {
       if(err) return reject(err);
       
       let searches = db.collection('searches');
-    });*/
+    });
     
   })
-}
+}*/
