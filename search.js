@@ -7,8 +7,8 @@ const id = process.env.AID;
 const https = require('https');
 
 
-module.exports = (query) => {
-  //console.log(query);
+module.exports = (query, offset) => {
+  
   return new Promise( (resolve, reject) => {
     let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&searchType=image' +'&q='+query;
     
