@@ -35,10 +35,10 @@ module.exports = (query) => {
     https.get(url, function  (response) {
       response.setEncoding('utf8');
     
-      let data = '';
+      let data;
     
-      response.on("data", function (chunk) { data += chunk });  //console.log('chunk:'+chunk)
-      console.log("data: "+data);
+      response.on("data", function (chunk) { data = chunk });  //console.log('chunk:'+chunk)
+      //console.log("data: "+data);
     
     
       response.on("end", function () { console.log('end:');
