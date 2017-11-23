@@ -7,10 +7,30 @@ const id = process.env.AID;
 const http = require('http');
 
 
+let test = function (query) {
+  //return { "yup": query }
+  
+  let url = 'http://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
+    
+    http.get(url, function  (response) {
+      console.log('in');
+      console.log(response);
+      response.on("error", function (err) {
+        console.log('error:'+err);
+      });
+    
+    response.setEncoding('utf8');
+    let data;
+    response.on("data", function (chunk) { console.log('chunk:'+chunk)
+                                          data = chunk });
+      //console.log(data);
+    
+    response.on("end", function () { console.log('end:')});
+    }).on('error', (err) => {console.log('rejected:' +err)});
+}
 
 
-
-module.ex
+module.exports = test;
 
 /*module.exports = (query) => {
   return new Promise( (resolve, reject) => {
