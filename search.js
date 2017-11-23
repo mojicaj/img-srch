@@ -10,8 +10,8 @@ const http = require('http');
 let test = function (query) {
   //return { "yup": query }
   
-  //let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
-    let url = 'http://cse.google.com/cse/publicurl?cx='+ id +'&q='+query;
+  let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
+  
     http.get(url, function  (response) {
       console.log('in');
       //console.log(response);
