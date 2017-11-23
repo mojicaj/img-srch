@@ -8,6 +8,7 @@ const https = require('https');
 
 
 module.exports = (query) => {
+  //console.log(query);
   return new Promise( (resolve, reject) => {
     let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&searchType=image' +'&q='+query;
     
@@ -16,17 +17,18 @@ module.exports = (query) => {
     
       let rawData = '';
     
-      response.on("data", function (chunk) { rawData += chunk });  //console.log('chunk:'+chunk)    
+      response.on("data", function (chunk) { rawData += chunk });   
     
       response.on("end", function () { 
         let data = JSON.parse(rawData);
-        console.log(data);
+        
         let items = data.items;
-        /*let results = items.map( i => ({
+        let results = items.map( i => ({
          url: i.link,
-         alt: i.snippet
-      })); // pageUrl: i.image.contextLink*/
-        resolve(items);
+         alt: i.snippet,
+         pageUrl: i.image.contextLink
+      }));
+        resolve(JSON.stringify(results));
         
       });
     }).on('error', (err) => {reject(err)});
