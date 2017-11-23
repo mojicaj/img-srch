@@ -20,8 +20,12 @@ module.exports = (query) => {
     
       response.on("end", function () { 
         let data = JSON.parse(rawData);
-        console.log(data.items);
-        resolve(data.items);
+        let items = data.items;
+        let results = items.map( i => ({
+         url: i.link,
+         alt: i.snippet
+      })); // pageUrl: i.image.contextLink
+        resolve(results);
         
       });
     }).on('error', (err) => {reject(err)});
