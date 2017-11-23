@@ -33,20 +33,17 @@ module.exports = (query) => {
     let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&q='+query;
     
     https.get(url, function  (response) {
-      
-    
-    //response.setEncoding('utf8');
+      response.setEncoding('utf8');
     
       let data = '';
     
-      response.on("data", function (chunk) { console.log('chunk:'+chunk)
-                                          data += chunk });
-      //console.log(data);
+      response.on("data", function (chunk) { data += chunk });  //console.log('chunk:'+chunk)
+      console.log("data: "+data);
     
     
       response.on("end", function () { console.log('end:');
-                                                 resolve({ data }) });
-      });
+                                                 resolve(data) });
+    }).on('error', (err) => {console.log('rejected:' +err)});
   
     /*mongodb.MongoClient.connect(uri, function(err, db) {
       if(err) return reject(err);
@@ -54,5 +51,5 @@ module.exports = (query) => {
       let searches = db.collection('searches');
     });*/
     
-  }).on('error', (err) => {console.log('rejected:' +err)});
+  });
 }
