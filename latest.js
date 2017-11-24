@@ -12,10 +12,9 @@ module.exports = () => {
       
       const searches = db.collection('searches');
       
-      searches.find({_id: 0}).toArray(function (err, stored) {
+      searches.find({},{_id: 0}).toArray(function (err, stored) {
         if (err) reject(err);
-        console.log(stored[0]);
-        resolve('searches');
+        resolve(stored);
       });
       
       db.close();
