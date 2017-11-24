@@ -9,6 +9,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const search = require('./search.js');
+const latest = require('./latest.js');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -45,6 +46,14 @@ app.route('/api/imagesearch/:query')
         res.type('json').send(results);
       });
   //res.type('json').send(search(req.params.query));
+  
+  })
+
+app.route('/api/latest')
+  .get( (req, res) => {
+    latest().then((results) => {
+        res.type('json').send(results);
+      });
   
   })
 

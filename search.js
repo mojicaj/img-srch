@@ -9,10 +9,11 @@ const https = require('https');
 
 module.exports = (query, offset) => {
   let time = new Date().toISOString();
-  console.log(time);
+  let latest = { term: query, when: time };
+  
   return new Promise( (resolve, reject) => {
     let start = (offset) ? offset : 1;
-    console.log(start);
+    
     let url = 'https://www.googleapis.com/customsearch/v1?key='+ key +'&cx=' + id +'&searchType=image' +'&q='+query+'&start=' + start;
     
     https.get(url, function  (response) {
@@ -36,11 +37,16 @@ module.exports = (query, offset) => {
       });
     }).on('error', (err) => {reject(err)});
   
-    /*mongodb.MongoClient.connect(uri, function(err, db) {
+    mongodb.MongoClient.connect(uri, function(err, db) {
       if(err) return reject(err);
       
-      let searches = db.collection('searches');
-    });*/
+      const searches = db.collection('searches');
+      
+      searches.insert(latest, function (err, data) {
+            if (err) { throw err }
+      });
+      db.close();
+    });
     
   });
 }
